@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,43 +35,47 @@
 <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
         <div class="wrap-login100">
-            <form action="action/register.php" method="post" class="login100-form validate-form">
+            <?php
+            $Id = $_SESSION['id'];
+            include 'database/db.php'; //database connection
+            $sql = "SELECT * FROM users WHERE id = '$Id'";
+            //                $result = mysqli_query($connection, $sql);
+            //                $row = mysqli_fetch_array($result);
+            echo $Id;
+
+            ?>
+
+            <form class="login100-form validate-form">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
+
                 <span class="login100-form-title p-b-34 p-t-27">
-						Create an Account
+						Change Password
 					</span>
 
                 <div class="wrap-input100 validate-input" data-validate = "Enter username">
-                    <input class="input100" type="text" name="username" placeholder="Username">
-                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
-                </div>
-
-                <div class="wrap-input100 validate-input" data-validate = "Enter username">
-                    <input class="input100" type="email" name="email" placeholder="Email">
+                    <input class="input100" type="password" name="Cpassword" placeholder="Curren Password">
                     <span class="focus-input100" data-placeholder="&#xf207;"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <input class="input100" type="password" name="password" placeholder="Password">
+                    <input class="input100" type="password" name="New_password" placeholder="Password">
                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <input class="input100" type="password" name="retype_password" placeholder="Retype Password">
+                    <input class="input100" type="password" name="Confirmed_password" placeholder="Password">
                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
                 </div>
                 <div class="container-login100-form-btn">
-                    <button type="submit" name="register" class="login100-form-btn">
-                        Sign Up
+                    <button type="submit" name="submit" class="login100-form-btn">
+                        Change Password
                     </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-
 <div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->

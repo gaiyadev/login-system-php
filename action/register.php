@@ -1,8 +1,6 @@
 <?php
 include '../database/db.php'; //database connection
 
-
-
 if (isset($_POST['register'])) {
     // accepting the form input
     $username = mysqli_real_escape_string($connection, $_POST['username']);
